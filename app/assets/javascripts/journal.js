@@ -5,20 +5,17 @@ Journal = {
   Views: {},
   Routers: {},
 
-  initialize: function () {
-
-    var col = new Journal.Collections.Posts();
-    col.create({title: "test", body: "body" });
-    var view = new Journal.Views.PostsListView(col);
-    $('body').html(view.render().$el);
-
-    new Journal.Routers.JournalRouter($('body'));
-    Backbone.history.start();
+  initialize: function ($sidebar, $content) {
+    var that = this;
+    var posts = new Journal.Collections.Posts();
+    posts.fetch({success: function(){
+      that.installSidebar($sidebar, posts);
+      new Journal.Routers.JournalRouter($content, posts);
+      Backbone.history.start();
+    }});
+  },
+  installSidebar: function ($sidebar, posts) {
+    var view = new Journal.Views.PostsListView(posts);
+    $sidebar.html(view.render().$el);
   }
-
-}
-//
-$(function(){
-  new Journal.Routers.JournalRouter($('body'));
-  Backbone.history.start()
-});
+};

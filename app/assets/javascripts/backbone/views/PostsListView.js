@@ -28,7 +28,9 @@ Journal.Views.PostsListView = Backbone.View.extend({
     console.log(event);
     var that = this;
     var id = $(event.target).attr("data-id");
-    that.collection.remove(id);
+    var post = that.collection.get(id);
+    post.destroy();
+    //that.collection.remove(id);
 
   },
 });

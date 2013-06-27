@@ -19,7 +19,17 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    debugger
     Post.delete(params[:id])
+    render :json => true
+  end
+
+  def update
+    post = Post.find(params[:id])
+    post.update_attributes(params[:post])
+    if post.save
+      render :json => post
+    else
+      render :json => post.errors, :status => 422
+    end
   end
 end

@@ -1,9 +1,16 @@
-<ul>
-  <% posts.each(function(post) { %>
-    <li>
-      <%= post.escape("title") %>
-      <button data-id="<%= post.escape('id') %>"
-               class="detele-button">Delete</button>
-    </li>
-  <% }); %>
-</ul>
+<h2>Posts</h2>
+<div class="dropdown clearfix" style="position:relative;">
+  <ul class="nav nav-list" role="menu" aria-labelledby="dLabel">
+    <% posts.each(function(post) { %>
+      <li>
+        <a href="#/posts/<%= post.escape("id") %>">
+          <%= post.escape("title") %>
+
+        <button data-id="<%= post.escape('id') %>"
+                 class="detele-button btn btn-mini btn-danger pull-right">Delete</button>
+       </a></li>
+    <% }); %>
+  </ul>
+</div>
+<br />
+<a href="#new" class="btn center btn-primary">New Form</a>

@@ -4,8 +4,8 @@
 #= require_tree ./views
 #= require_tree ./routers
 
-window.Journal =
-  Models: {}
-  Collections: {}
-  Routers: {}
-  Views: {}
+# window.Journal =
+#   Models: {}
+#   Collections: {}
+#   Routers: {}
+#   Views: {}

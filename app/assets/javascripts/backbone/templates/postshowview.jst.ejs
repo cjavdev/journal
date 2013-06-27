@@ -1,4 +1,11 @@
-<h1><%= post.escape("title") %></h1>
-<p>
-<%= post.escape("body") %>
-</p>
+<div id="post-show">
+  <form id="editForm">
+    <h1><span id="title-span"><%= post.escape("title") %></span></h1>
+    <p >
+      <span id="body-span">
+    <%= post.escape("body") %>
+    </span>
+    </p>
+  </form>
+<a href="#">Back</a>
+</div>
